@@ -2,6 +2,6 @@ package com.example.dominguezborja.Componentes.navegacion
 
 sealed class Routes {
 
-    data object login
+    data object Login
     data object Home
 }

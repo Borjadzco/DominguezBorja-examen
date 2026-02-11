@@ -6,10 +6,12 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.NavDisplay
+import com.example.dominguezborja.pantallas.Login
+import okhttp3.Route
 
 @Composable
 fun BasicNavigation(){
-    val backStack = remember { mutableStateListOf<Any>(Routes.login) }
+    val backStack = remember { mutableStateListOf<Any>(Routes.Login) }
 
     NavDisplay(
         backStack = backStack,
@@ -17,7 +19,13 @@ fun BasicNavigation(){
         entryProvider = {
                 key ->
             when(key){
-                is Routes.login -> NavEntry(key) {
+                is Routes.Login -> NavEntry(key) {
+                    Login(
+                        entrar = {backStack.add(Routes.Home)}
+                    )
+                }
+                is Routes.Home -> NavEntry(key){
+
                 }
 
                 else -> NavEntry(key = Unit) {
