@@ -4,10 +4,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.NavDisplay
+import com.example.dominguezborja.pantallas.Home
 import com.example.dominguezborja.pantallas.Login
-import okhttp3.Route
 
 @Composable
 fun BasicNavigation(){
@@ -25,7 +26,11 @@ fun BasicNavigation(){
                     )
                 }
                 is Routes.Home -> NavEntry(key){
-
+                    Home(
+                        agregarJugador = { backStack.add(Routes.Agregar) },
+                    )
+                }
+                is Routes.Agregar -> NavEntry(key){
                 }
 
                 else -> NavEntry(key = Unit) {

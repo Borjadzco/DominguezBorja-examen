@@ -5,17 +5,22 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dominguezborja.Componentes.Crud.Jugador
 import com.example.dominguezborja.Componentes.Crud.ViewModelCrud
 
 @Composable
-fun Home(viewmodel: ViewModelCrud){
+fun Home(viewmodel: ViewModelCrud = viewModel(),
+         jugador: List<Jugador>,
+         agregarJugador:() -> Unit){
 
     Spacer(modifier = Modifier.padding(15.dp))
     Column (modifier = Modifier.padding(5.dp)
@@ -25,7 +30,18 @@ fun Home(viewmodel: ViewModelCrud){
         Spacer(modifier = Modifier.padding())
 
         LazyColumn {
-
+            items(jugador) { jugado ->
+                ProdItemCard(
+                    jugador = jugado,
+                    onDelete = { id -> viewmodel.deleteJugador(id) }
+                )
+            }
+        }
+        Button(onClick = {
+            agregarJugador() },
+            modifier = Modifier.fillMaxWidth()
+            ) {
+            Text("Agregar jugador")
         }
     }
 }

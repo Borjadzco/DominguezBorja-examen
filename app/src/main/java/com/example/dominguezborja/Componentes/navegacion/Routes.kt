@@ -4,4 +4,5 @@ sealed class Routes {
 
     data object Login
     data object Home
+    data object Agregar
 }
