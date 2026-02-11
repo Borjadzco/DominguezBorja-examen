@@ -12,7 +12,7 @@ class ViewModelCrud: ViewModel(){
         private val db = Firebase.firestore
         private val jogadorCollection = db.collection("jugadores")
         private val _jugador = MutableStateFlow<List<Jugador>>(emptyList())
-        val producto: StateFlow<List<Jugador>> = _jugador
+        val jugador: StateFlow<List<Jugador>> = _jugador
 
         private val _uiState = MutableStateFlow(UiStateLogin())
         val uistate: StateFlow<UiStateLogin> = _uiState.asStateFlow()

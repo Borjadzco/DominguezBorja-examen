@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -20,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dominguezborja.R
 import com.example.dominguezborja.UiState.ViewModelLogin
@@ -31,12 +33,14 @@ fun Login(viewmodel: ViewModelLogin = viewModel(), entrar:() -> Unit){
 
     Column (modifier = Modifier.padding(5.dp)
         .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally){
+        horizontalAlignment = Alignment.CenterHorizontally,
+        ){
 
         Image(painterResource(R.drawable.logo),
             contentDescription = "logo")
 
-        Text("Iniciar Sesión")
+        Text("Iniciar Sesión", fontSize = 50.sp,
+            modifier = Modifier.padding(15.dp))
 
         TextField(value = uiState.email,
             onValueChange = {viewmodel.onEmailChange(it)},
@@ -59,8 +63,8 @@ fun Login(viewmodel: ViewModelLogin = viewModel(), entrar:() -> Unit){
             onSuccess = entrar,
             onError = {println(it)}
         )}, modifier = Modifier.fillMaxWidth()
-            .padding(10.dp)
-            .background(Color(0xFF27D21F))) {
+            .padding(10.dp),
+            colors = ButtonDefaults.buttonColors(Color(0xFF27D21F)) ) {
             Text("Login")
         }
     }

@@ -25,10 +25,11 @@ fun Agregar(
     val uiState by viewModelCrud.uistate.collectAsState()
     val jugador by viewModelCrud.uistate.collectAsState()
 
-    Spacer(modifier = Modifier.padding(20.dp))
+
 
     Column (modifier = Modifier.padding(5.dp)
         .fillMaxWidth()){
+        Spacer(modifier = Modifier.padding(20.dp))
         Text("Nuevo jugador", fontSize = 40.sp)
 
         TextField(value = uiState.nombre,

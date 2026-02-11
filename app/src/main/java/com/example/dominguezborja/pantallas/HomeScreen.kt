@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -18,18 +19,20 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dominguezborja.Componentes.Crud.Jugador
 import com.example.dominguezborja.Componentes.Crud.ViewModelCrud
+import com.example.dominguezborja.UiState.UiStateLogin
 
 @Composable
 fun Home(viewmodel: ViewModelCrud = viewModel(),
          agregarJugador:() -> Unit){
     val jugador by viewmodel.uistate.collectAsState()
 
-    Spacer(modifier = Modifier.padding(20.dp))
+
     Column (modifier = Modifier.padding(5.dp)
         .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally){
+        Spacer(modifier = Modifier.padding(20.dp))
         Text("Plantilla temporada 25/26", fontSize = 30.sp)
-        Spacer(modifier = Modifier.padding())
+        Spacer(modifier = Modifier.padding(20.dp))
 
         LazyColumn {
             items(jugador) { jugado ->
@@ -38,7 +41,7 @@ fun Home(viewmodel: ViewModelCrud = viewModel(),
                     onDelete = { id -> viewmodel.deleteJugador(id) }
                 )
             }
-          }
+        }
         Button(onClick = {
             agregarJugador() },
             modifier = Modifier.fillMaxWidth()
