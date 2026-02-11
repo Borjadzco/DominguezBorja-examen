@@ -38,7 +38,7 @@ class ViewModelCrud: ViewModel(){
     fun addJugador() {
         val ui = _uiState.value
 
-        val producto = Jugador(
+        val productoJ = Jugador(
             nombre = ui.nombre,
             numero = ui.numero.toIntOrNull()?: 0,
             nacionalidad = ui.nacionalidad,
@@ -46,7 +46,7 @@ class ViewModelCrud: ViewModel(){
             imagen = ui.imagen
         )
 
-        jogadorCollection.add(producto)
+        jogadorCollection.add(productoJ)
     }
     init {
         getJugador()

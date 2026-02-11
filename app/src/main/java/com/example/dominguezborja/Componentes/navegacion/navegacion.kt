@@ -7,6 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.NavDisplay
+import com.example.dominguezborja.pantallas.Agregar
 import com.example.dominguezborja.pantallas.Home
 import com.example.dominguezborja.pantallas.Login
 
@@ -31,6 +32,9 @@ fun BasicNavigation(){
                     )
                 }
                 is Routes.Agregar -> NavEntry(key){
+                    Agregar(
+                        cancelar = {backStack.removeLastOrNull()}
+                    )
                 }
 
                 else -> NavEntry(key = Unit) {

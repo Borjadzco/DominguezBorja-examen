@@ -55,13 +55,13 @@ fun Login(viewmodel: ViewModelLogin = viewModel(), entrar:() -> Unit){
                     KeyboardType.Password)
             )
 
-    }
-    Button(onClick = {viewmodel.login(
-        onSuccess = entrar,
-        onError = {println(it)}
-    )}, modifier = Modifier.fillMaxWidth()
-        .padding(10.dp)
-        .background(Color(0xFF27D21F))) {
-        Text("Login")
+        Button(onClick = {viewmodel.login(
+            onSuccess = entrar,
+            onError = {println(it)}
+        )}, modifier = Modifier.fillMaxWidth()
+            .padding(10.dp)
+            .background(Color(0xFF27D21F))) {
+            Text("Login")
+        }
     }
 }

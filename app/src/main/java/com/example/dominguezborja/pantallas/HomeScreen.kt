@@ -9,6 +9,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -19,10 +21,10 @@ import com.example.dominguezborja.Componentes.Crud.ViewModelCrud
 
 @Composable
 fun Home(viewmodel: ViewModelCrud = viewModel(),
-         jugador: List<Jugador>,
          agregarJugador:() -> Unit){
+    val jugador by viewmodel.uistate.collectAsState()
 
-    Spacer(modifier = Modifier.padding(15.dp))
+    Spacer(modifier = Modifier.padding(20.dp))
     Column (modifier = Modifier.padding(5.dp)
         .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally){
@@ -36,7 +38,7 @@ fun Home(viewmodel: ViewModelCrud = viewModel(),
                     onDelete = { id -> viewmodel.deleteJugador(id) }
                 )
             }
-        }
+          }
         Button(onClick = {
             agregarJugador() },
             modifier = Modifier.fillMaxWidth()
